@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Saya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="galeri-wrapper">
+        
+        <h1>Video Kami</h1>
+        <p>Arahkan kursor ke video untuk melihat preview (tanpa suara).</p>
+
+        <div class="video-container">
+            <video src="WhatsApp Video 2025-10-24 at 16.56.29_582cc214.mp4" class="video-thumbnail" muted></video>
+            <video src="WhatsApp Video 2025-10-24 at 16.56.21_adafba11.mp4" class="video-thumbnail" muted></video>
+            <video src="WhatsApp Video 2025-10-25 at 20.38.03_3bdb24b6.mp4" class="video-thumbnail" muted></video>
+        </div>
+        
+        <a href="index.html" class="tombol">Kembali ke Profil</a>
+
+    </div>
+
+
+    <div class="video-fokus" id="videoFokus">
+        <span class="tutup-fokus" id="tutupFokus">&times;</span>
+        <video id="videoPlayer" controls autoplay></video>
+    </div>
+
+
+    <script>
+        // Ambil elemen-elemen yang dibutuhkan (Sama)
+        const thumbnails = document.querySelectorAll('.video-thumbnail');
+        const videoFokus = document.getElementById('videoFokus');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const tutupFokus = document.getElementById('tutupFokus');
+
+        // Loop (ulangi) untuk setiap thumbnail video
+        thumbnails.forEach(thumb => {
+            
+            // --- BAGIAN 1: FUNGSI MOUSEDOWN UNTUK FOKUS (LIGHTBOX) ---
+            
+            // KITA GANTI 'click' MENJADI 'mousedown'
+            thumb.addEventListener('mousedown', (e) => {
+                
+                // Hentikan aksi default browser
+                e.preventDefault(); 
+                
+                // Pastikan video kecilnya berhenti dan reset
+                thumb.pause();
+                thumb.currentTime = 0;
+
+                // Baru buka lightbox
+                const videoSrc = thumb.getAttribute('src');
+                videoPlayer.setAttribute('src', videoSrc);
+                videoFokus.style.display = 'flex'; 
+            });
+
+            // --- BAGIAN 2: FUNGSI HOVER (TETAP SAMA) ---
+            
+            // Saat mouse masuk ke area video
+            thumb.addEventListener('mouseover', () => {
+                // Jangan putar video jika lightbox sedang aktif
+                if (videoFokus.style.display !== 'flex') {
+                    thumb.play();
+                }
+            });
+
+            // Saat mouse keluar dari area video
+            thumb.addEventListener('mouseout', () => {
+                thumb.pause(); 
+                thumb.currentTime = 0;
+            });
+        });
+
+        // Fungsi untuk menutup kotak fokus (Sama)
+        function tutupVideo() {
+            videoFokus.style.display = 'none'; 
+            videoPlayer.pause(); 
+            videoPlayer.setAttribute('src', ''); 
+        }
+
+        // Tambahkan pendengar klik di tombol tutup (Sama)
+        tutupFokus.addEventListener('click', tutupVideo);
+
+        // Tutup juga jika mengklik di luar area video (Sama)
+        videoFokus.addEventListener('click', (e) => {
+            if (e.target === videoFokus) { 
+                tutupVideo();
+            }
+        });
+    </script>
+
+</body>
+</html>

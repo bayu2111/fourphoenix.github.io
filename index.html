@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Phoenix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<audio id="lagu" autoplay>
+  <source src="Dewa_19_-_Pangeran_Cinta_(mp3.pm).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const audio = document.getElementById("lagu");
+    audio.volume = 0.6; // biar gak terlalu keras
+    audio.play().catch(() => {
+      console.log("Autoplay diblokir, user harus tekan tombol dulu.");
+    });
+  });
+</script>
+
+
+<body>
+
+    <div class="kartu-profil">
+        
+        <img src="Screenshot 2025-10-25 201932.png" alt="Foto Profil" class="foto-profil">
+        
+        <h1 class="nama">Four Phoenix </h1>
+        <p class="deskripsi">
+           Kami adalah Four Phoenix.
+           
+           Sebuah kolaborasi empat musisi asal Medan, menggabungkan harmoni dua vokal,Farhan Aulia dan Dava Irza, yang dibalut oleh melodi gitar Irhas Yazid, alunan bass Luthfi Habib, dan dentuman ritme dari Bayu Putra.
+
+        </p>
+        <p>hubungi kami di</p>
+        <div class="sosmed-links">
+            
+            <a href="https://www.instagram.com/fouronixofficial/?utm_source=ig_web_button_share_sheet" target="_blank" class="link ig">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+           
+        </div>
+
+        <a href="galeri.html" class="tombol">Lihat Galeri Kami</a>
+        
+        <a href="video.html" class="tombol">Lihat Video Kami</a>
+
+    </div>
+
+</body>
+</html>
